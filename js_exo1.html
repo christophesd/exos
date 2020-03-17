@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercices d'Algo</title>
+</head>
+
+<body>
+
+
+<script> 
+    
+document.write("<h1>Exercices d'Algo :</h1><hr>");
+var a = 5;
+var b = 10;
+document.write("(pour a = " + a + " et b = " + b + ")");
+var result1 = result2 = 0;
+
+
+// exo 1
+document.write("<br><h5>Exercice 1 : M'afficher le resultat le plus grand :</h5>");
+if (a > b) {
+    result1 = a + "est plus grand que " + b;
+    result2 = b + "est plus petit que " + a;
+}
+else if (a == b) {
+    result1 = a + "est égale à " + b + " (pas de plus grand)";
+    result2 = a + "est égale à " + b + " (pas de plus petit)";
+}
+else if (a < b) {
+    result1 = b + " est plus grand que " + a;
+    result2 = a + " est plus petit que " + b;
+}
+else {
+    result1 = result2 = "Erreur de frappe";
+}
+document.write(result1);
+
+// exo 2
+document.write("<br><h5>Exercice 2 : M'afficher le resultat le plus petit :</h5>");
+document.write(result2);
+
+
+// exo 3
+document.write("<br><h5>Exercice 3 : Echanger le contenu de la variable a et b :</h5>");
+document.write("Avant: a = " + a + " et b = " + b + "<br>");
+var z = 0;
+z = a;
+a = b;
+b = z;
+document.write("Après: a = " + a + " et b = " + b + "<br>");
+
+
+//exo 4
+document.write("<br><h5>Exercice 4 : Additionner la variable a et b :</h5>");
+result4 = 0;
+result4 = a+b;
+document.write("a + b est égale à " + result4);
+
+
+// exo 5
+document.write("<br><h5>Exercice 5 : Afficher un nombre aléatoire entre 1 et 100 :</h5>");
+result5 = 0;
+function aleatoire(min, max) {
+    x = Math.random() * (max - min + 1) + min;
+    y = Math.floor(x);
+    return y;
+}
+result5 = aleatoire(1, 100);
+document.write(result5 + " est un nombre aléatoire entre 1 et 100");
+
+
+// exo 6
+document.write("<br><h5>Exercice 6 : Afficher un nombre aléatoire entre 5 et 10 :</h5>");
+result6 = 0;
+result6 = aleatoire(5, 10);
+document.write(result6 + " est un nombre aléatoire entre 5 et 10");
+
+
+// exo 7
+document.write("<br><h5>Exercice 7 : Faire une fonction Addition :</h5>");
+result7 = 0;
+function add(x, y) {
+    val = x+y;
+    return val; 
+}
+result7 = add(a, b);
+document.write("a + b est égale à " + result7);
+
+
+// exo 8
+document.write("<br><h5>Exercice 8 : Générer un chiffre aléatoire entre 1 et 100, \"je suis nul si x < 50\" sinon \"je suis bon\"  :</h5>");
+document.write(result5 + " est le nombre aléatoire (entre 1 et 100) généré à la question 5)<br>");
+result8 = "";
+if (result5 < 50){
+    result8 = '"Je suis nul"';
+}
+else {
+    result8 = '"Je suis bon"';
+}
+document.write("Donc " + result8 + " !");
+
+
+// exo 9
+document.write("<br><h5>Exercice 9 : Faire une fonction qui prend en paramètre x (nombre aléatoire entre 0 et 5), si x==1 alors afficher AAAA, si x==2 alors afficher BBBB, si x==3 alors afficher CCCC, si x==4 alors afficher DDDD, sinon je suis une perruche :</h5>");
+function exo9(x) {
+    if (x == 1) {
+        val = "AAAA";
+        return val;
+    }
+    else if (x == 2) {
+        val = "BBBB";
+        return val;
+    }
+    else if (x == 3) {
+        val = "CCCC";
+        return val;
+    }
+    else if (x == 4) {
+        val = "DDDD";
+        return val;
+    }
+    else {
+        val = "Je suis une peruche";
+        return val;
+    }
+}
+var nbal = aleatoire(0, 5);
+document.write(nbal + " : " + exo9(nbal) );
+
+
+// exo 9 bis
+document.write("<br><h5>Exercice 9 bis : Faire la question 10 avec l'utilisation d'un switch Case :</h5>");
+function exo9bis(x) {
+    var val;
+    switch (x) {
+        case 1:
+            val = "AAAA";
+            break;
+        case 2:
+            val = "BBBB";
+            break;
+        case 3:
+            val = "CCCC";
+            break;
+        case 4:
+            val = "DDDD";
+            break;
+        default:
+            val = "Je suis une peruche";
+            break;
+    }
+    return val;
+}
+nbal = aleatoire(0, 5);
+document.write(nbal + " : " + exo9bis(nbal) );
+
+
+// exo 10
+document.write("<br><h5>Exercice 10 : Générer 10 valeur aléatoire, et afficher les :</h5>");
+for (var i = 0; i < 10; i++) {
+    document.write(aleatoire(0, 100) + ", ");
+}
+
+
+// exo 11
+document.write("<br><h5>Exercice 11 : Ajouter 10 valeur aléatoire dans un tableau :</h5>");
+var aleatoireArray = [];
+for (var i = 0; i < 10; i++) {
+    aleatoireArray[i] = aleatoire(0, 100);
+    document.write(aleatoireArray[i] + ", ");
+}
+
+
+// exo 12
+document.write("<br><h5>Exercice 12 : Parcourir ce tableau et afficher l'addition de tous ces résultats :</h5>");
+result12 = 0;
+aleatoireArray.forEach(function(val) {
+    result12 = result12 + val;
+});
+document.write("Le résultat de l'addition de tous ces résultats est " + result12);
+
+
+</script>
+
+    
+</body>
+</html>

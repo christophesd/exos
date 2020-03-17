@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excercice 2 - JavaScript</title>
+
+    <script>
+
+    </script>
+</head>
+
+<body>
+
+    <h1>Exercices 2ème partie (JavaScript) :</h1>
+    <hr>
+
+
+
+    <!-- exo 1 -->
+    <br>
+    <h5>Exercice 1 : Réaliser un script js permettant d'afficher le message à l'écran suivant : "Je suis une petite
+        perruche" :</h5>
+    <script>
+        document.write("Je suis une petite perruche");
+    </script>
+
+
+
+    <!-- exo 2 -->
+    <br>
+    <h5>Exercice 2 : Réaliser un script js permettant d'afficher un formulaire avec un texte écris à l'intérieur "Je
+        suis une petite perruche" avec le code html suivant (rien ne dois être ajouté au code html) :</h5>
+    <div id="exo2">
+        <script>
+            document.write("<form><input value='Je suis une petite perruche' size='60'></form>");
+
+            // Option 2
+            // document.getElementById("exo2").innerHTML = "<form><input value='Je suis une petite perruche' size='60'></form>"
+        </script>
+    </div>
+
+
+
+    <!-- exo 3 -->
+    <br>
+    <h5>Exercice 3 : Réaliser l'entrée d'un champ à savoir s'il est vide ou pas dans un formulaire en JS à partir du
+        code html suivant :</h5>
+    <div>
+        <form id="monformulaire" onsubmit="return validerform();">
+            <div>
+                <label for="label1">Champ&nbsp;:</label><br>
+                <input type="text" id="myField" size="60">
+                <span id="erreurlabel"></span>
+            </div>
+            <div>
+                <input type="submit" value="Envoyer">
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function validerform() {
+            var champ = document.getElementById("myField").value;
+            if (!champ) {
+                document.getElementById("erreurlabel").innerHTML = "Vide";
+            } else {
+                document.getElementById("erreurlabel").innerHTML = "Pas vide";
+            }
+            return false;
+        }
+
+        // Option 2 (sans "onsubmit")
+        // document.getElementById("monformulaire").addEventListener("submit", function (e) {
+        //     e.preventDefault();
+        //     ....
+        // });
+    </script>
+
+
+
+    <!-- exo 4 -->
+    <br>
+    <h5>Exercice 4 : Réaliser en JS un formulaire, qui calcule le salaire net d'un utilisateur à partir de son salaire brut à partir d'un formulaire : 
+        - L'utilisateur rentre son salaire brut annuel, et ça lui donne son salaire net annuel, mensuel mais aussi horaire.</h5>
+
+
+    <form id="monformulaire2" onsubmit="return validerform2();">
+        <input type="text" id="brut" placeholder="Salaire Brut annuel">
+        <span id="erreur1"></span>
+
+        <p>Votre métier :<span id="erreur2"></span></p>
+        
+
+        <input type="radio" id="choix1" name="poste">
+        <label for="choix1"> : Salarié non-cadre (-22%)</label><br>
+
+        <input type="radio" id="choix2" name="poste">
+        <label for="choix2"> : Salarié cadre (-25%)</label><br>
+
+        <input type="radio" id="choix3" name="poste">
+        <label for="choix3"> : Fonction publique (-15%)</label><br>
+
+        <input type="radio" id="choix4" name="poste">
+        <label for="choix4"> : Profession libérale (-45%)</label><br>
+
+        <input type="radio" id="choix5" name="poste">
+        <label for="choix5"> : Portage salarial (-51)</label><br>
+        <br>
+        <span id="resultnet"></span>
+        <span id="resultnetmensuel"></span>
+        <input type="submit" value="Envoyer">
+    </form>
+
+    <script>
+        function validerform2() {
+            var brut = document.getElementById("brut").value;
+            var poste = document.getElementsByName("poste");
+            var net, mensuel, erreur1, erreur2;
+
+            if (!brut) {
+                document.getElementById("erreur1").innerHTML = " Veuillez remplir ce champ";
+            } else {
+                document.getElementById("erreur1").innerHTML = "";
+
+                if (!poste[0].checked && !poste[1].checked && !poste[2].checked && !poste[3].checked && !poste[4].checked) {
+                    document.getElementById("erreur2").innerHTML = " Veuillez remplir ce champ";
+                } else {
+                    document.getElementById("erreur2").innerHTML = "";
+
+                    if (poste[0].checked) {
+                        net = brut - brut*22/100;
+                    } else if (poste[1].checked) {
+                        net = brut - brut*25/100;
+                    } else if (poste[2].checked) {
+                        net = brut - brut*15/100;
+                    } else if (poste[3].checked) {
+                        net = brut - brut*45/100;
+                    } else if (poste[4].checked) {
+                        net = brut - brut*51/100;
+                    }
+
+                    document.getElementById("resultnet").innerHTML = net + "€ de salaire annuel Net<br>";
+                    mensuel = net / 12;
+                    document.getElementById("resultnetmensuel").innerHTML = mensuel + "€ de salaire mentuel Net<br>";
+                    horaire = (Math.round(net/1820*100)/100);
+                    document.getElementById("resultnetmensuel").innerHTML = horaire + "€ de salaire horaire Net<br>";
+                    
+                }
+
+            }
+
+            return false;
+        }
+    </script>
+
+
+</body>
+
+</html>
